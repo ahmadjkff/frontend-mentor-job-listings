@@ -23,17 +23,11 @@ const MyProvider = ({ children }) => {
     }
 
     setData(
-      initdata.filter((item) => {
-        const matchesRole = state.includes(item.role);
-        const matchesLevel = state.includes(item.level);
-        const matchesLanguages = item.languages?.some((language) =>
-          state.includes(language)
-        );
-        const matchesTools = item.tools?.some((tool) => state.includes(tool));
-
-        // Return true if any criteria match
-        return matchesRole || matchesLevel || matchesLanguages || matchesTools;
-      })
+      initdata.filter((job) =>
+        state.every((filter) =>
+          [job.role, job.level, ...job.languages, ...job.tools].includes(filter)
+        )
+      )
     );
   }
 
