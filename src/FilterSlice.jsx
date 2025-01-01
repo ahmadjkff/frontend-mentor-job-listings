@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { MyContext } from "./Context";
-import removeIcon from "../images/icon-remove.svg";
+import removeIcon from "../public/images/icon-remove.svg";
 
 function FilterSlice() {
   const { state, clearState, filterState } = useContext(MyContext);
