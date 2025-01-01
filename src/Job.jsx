@@ -15,10 +15,13 @@ function Job({
   languages,
   tools,
 }) {
-  const { includes, setState } = useContext(MyContext);
+  const { includes, setState, filterState } = useContext(MyContext);
 
   function handler(x) {
-    if (includes(x)) return;
+    if (includes(x)) {
+      filterState(x);
+      return;
+    }
     setState((prev) => [...prev, x]);
   }
 
